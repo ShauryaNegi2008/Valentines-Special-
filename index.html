@@ -15,18 +15,32 @@
     <br />
     <img src="please.png" height="498px" width="150px" alt="cat asking question" class="responsive" />
 
-    <script>
-      document
-        .getElementById("noButton")
-        .addEventListener("click", function () {
-          var yesButton = document.querySelector(
-            'button[onclick*="thankyou.html"]'
-          );
-          var currentFontSize = parseInt(
-            window.getComputedStyle(yesButton).fontSize
-          );
-          yesButton.style.fontSize = currentFontSize + 10 + "px"; // Increase font size by 5px
-        });
-    </script>
+ <script>
+  const noBtn = document.getElementById("noButton");
+
+  let noClickCount = 0;
+
+  const messages = [
+    "Are you sureee? 🤨",
+    "Think again.",
+    "Wrong answer detected.",
+    "My heart just lagged.",
+    "Okay but like… seriously?",
+    "This is emotional damage.",
+    "Be honest. You want to press Yes.",
+    "Stop pretending.",
+    "Last chance 😤"
+  ];
+
+  noBtn.addEventListener("click", function () {
+    if (noClickCount < messages.length) {
+      noBtn.innerText = messages[noClickCount];
+      noClickCount++;
+    } else {
+      noBtn.innerText = "Refresh the website";
+    }
+  });
+</script>
+
   </body>
 </html>
