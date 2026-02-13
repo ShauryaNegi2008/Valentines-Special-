@@ -8,7 +8,7 @@
   </head>
   <body>
     <div id="valentineQuestion"><b>Will you be my valentine?</b></div>
-    <button class="answerButton" onclick="location.href='thankyou.html'">
+    <button class="answerButton" id="yesButton" onclick="location.href='thankyou.html'">
       Yes
     </button>
     <button class="answerButton" id="noButton">I no no wanna o(╥﹏╥)o</button>
@@ -19,7 +19,7 @@
 
 <script>
   const noBtn = document.getElementById("noButton");
-  const yesBtn = document.querySelector('button[onclick*="thankyou.html"]');
+  const yesButton = document.querySelector('button[onclick*="thankyou.html"]');
   const image = document.getElementById("slideshowImage");
 
   let noClickCount = 0;
@@ -45,14 +45,18 @@
     noBtn.innerText = messages[noClickCount % messages.length];
     noClickCount++;
 
-    // Grow Yes button
-    let currentSize = parseInt(window.getComputedStyle(yesBtn).fontSize);
-    yesBtn.style.fontSize = (currentSize + 6) + "px";
-
     // Change image
     imageIndex = (imageIndex + 1) % images.length;
     image.src = images[imageIndex];
+
+    // Grow Yes button
+    var currentFontSize = parseInt(
+      window.getComputedStyle(yesButton).fontSize
+    );
+    yesButton.style.fontSize = currentFontSize + 10 + "px";
+
   });
 </script>
+
 
 
