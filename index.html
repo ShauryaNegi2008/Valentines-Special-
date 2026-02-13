@@ -14,12 +14,11 @@
     <button class="answerButton" id="noButton">I no no wanna o(╥﹏╥)o</button>
     <br />
     <img src="please.png" height="498px" width="150px" alt="cat asking question" class="responsive" />
-    <img src="1.png" height="498px" width="150px" alt="cat asking question" class="responsive" />
-    <img src="2.png" height="498px" width="150px" alt="cat asking question" class="responsive" />
-    <img src="3.png" height="498px" width="150px" alt="cat asking question" class="responsive" />
+    <img id="slideshowImage" src="1.png" width="250" />
 
- <script>
+<script>
   const noBtn = document.getElementById("noButton");
+  const image = document.getElementById("slideshowImage");
 
   let noClickCount = 0;
 
@@ -35,15 +34,23 @@
     "Last chance 😤"
   ];
 
+  const images = ["1.png", "2.png", "3.png"];
+  let imageIndex = 0;
+
   noBtn.addEventListener("click", function () {
+
+    // Change text
     if (noClickCount < messages.length) {
       noBtn.innerText = messages[noClickCount];
-      noClickCount++;
     } else {
-      noBtn.innerText = "Refresh the website";
+      noBtn.innerText = messages[noClickCount % messages.length];
     }
+
+    noClickCount++;
+
+    // Change image
+    imageIndex = (imageIndex + 1) % images.length;
+    image.src = images[imageIndex];
   });
 </script>
 
-  </body>
-</html>
